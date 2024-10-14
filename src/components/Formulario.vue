@@ -12,11 +12,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, DefineComponent } from "vue";
+import { defineComponent } from "vue";
 import Temporizador from "./Temporizador.vue";
 
 export default defineComponent({
-    name: "FormularioP",
+    name: "Formulario",
+    emits: ['aoSalvarTarefa'],
     data() {
         return {
             descricao: ''
@@ -27,8 +28,11 @@ export default defineComponent({
     },
     methods: {
         finalizarTarefa(tempoDecorrido: number): void {
-            console.log('Tempo da tarefa : ', tempoDecorrido);
-            console.log('Descrição : ', this.descricao);
+            console.log('tempo: ', tempoDecorrido)
+            this.$emit('aoSalvarTarefa', {
+                duracaoEmSegundos: tempoDecorrido,
+                descricao: this.descricao
+            })
             this.descricao = '';
         }
     },
