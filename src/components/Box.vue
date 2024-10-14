@@ -12,3 +12,10 @@ export default defineComponent({
     name: 'Box'
 })
 </script>
+
+
+<style scoped>
+div {
+    box-shadow: none;
+}
+</style>

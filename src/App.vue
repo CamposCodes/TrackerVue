@@ -1,11 +1,12 @@
 <template>
-    <main class="columns is-gapless is-multiline">
-        <div class="column is-one-quarter">
+    <main class="columns is-gapless is-multiline modo-escuro">
+        <div class="column is-one-fifth">
             <BarraLateral />
         </div>
-        <div class="column is-one-quarter">
+        <div class="column m-2">
             <Formulario @aoSalvarTarefa="salvarTarefa" />
             <div class="lista">
+                <h2 class="is-size-1 has-text-centered mb-5">Tarefas</h2>
                 <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
                 <Box v-if="listaEstaVazia">Você não está muito produtivo hoje :( </Box>
             </div>
@@ -48,7 +49,21 @@ export default defineComponent({
 </script>
 
 <style>
-.lista {
-    padding: 1rem;
+main {
+    background: var(--bg-primario);
+    color: var(--texto-primario);
+    --bg-primario: #081015;
+
+}
+
+
+main .modo-escuro {
+    --bg-primario: #b1abab;
+    --texto-primario: #ddd;
+}
+
+
+h2 {
+    color: #24846A;
 }
 </style>

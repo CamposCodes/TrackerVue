@@ -27,6 +27,6 @@ export default defineComponent({
 
 <style scoped>
 .display {
-    color: var(--texto-primario);
+    color: #5DBAA4;
 }
 </style>

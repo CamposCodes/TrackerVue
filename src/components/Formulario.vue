@@ -1,19 +1,20 @@
 <template>
-    <div>
-        <div class="columns">
-            <div class="column id-8" role="form" aria-label="Formulario para criação de uma nova tarefa">
+    <Box>
+        <div class="columns is-3">
+            <div class="column is-7" role="form" aria-label="Formulario para criação de uma nova tarefa">
                 <input type="text" class="input" placeholder="Qual tarefa deseja inicar?" v-model="descricao" />
             </div>
             <div class="column">
                 <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
             </div>
         </div>
-    </div>
+    </Box>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import Temporizador from "./Temporizador.vue";
+import Box from "./Box.vue";
 
 export default defineComponent({
     name: "Formulario",
@@ -25,6 +26,7 @@ export default defineComponent({
     },
     components: {
         Temporizador,
+        Box
     },
     methods: {
         finalizarTarefa(tempoDecorrido: number): void {
@@ -42,5 +44,14 @@ export default defineComponent({
 <style scoped>
 section {
     padding-right: 1rem;
+}
+
+input {
+    height: 3rem;
+    outline: none;
+}
+
+input:focus {
+    border-color: #5DBAA4;
 }
 </style>
