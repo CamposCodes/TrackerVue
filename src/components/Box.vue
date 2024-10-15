@@ -17,5 +17,7 @@ export default defineComponent({
 <style scoped>
 div {
     box-shadow: none;
+    background-color: var(--bg-tarefa);
+    color: var(--text-color);
 }
 </style>

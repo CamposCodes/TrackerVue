@@ -27,6 +27,6 @@ export default defineComponent({
 
 <style scoped>
 .display {
-    color: #5DBAA4;
+    color: var(--texto-cronometro);
 }
 </style>

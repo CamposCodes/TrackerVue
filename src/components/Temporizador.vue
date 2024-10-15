@@ -54,4 +54,9 @@ export default defineComponent({
 
 
 
-<style scoped></style>
+<style scoped>
+div>button {
+    background-color: var(--button);
+    border: none;
+}
+</style>

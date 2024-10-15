@@ -1,5 +1,5 @@
 <template>
-    <Box>
+    <Box class="formulario">
         <div class="columns is-3">
             <div class="column is-7" role="form" aria-label="Formulario para criação de uma nova tarefa">
                 <input type="text" class="input" placeholder="Qual tarefa deseja inicar?" v-model="descricao" />
@@ -42,6 +42,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.formulario {
+    color: var(--texto-primario);
+    background-color: var(--bg-primario);
+}
+
+
+
 section {
     padding-right: 1rem;
 }
@@ -49,9 +56,14 @@ section {
 input {
     height: 3rem;
     outline: none;
+    border-color: #5DBAA4;
+    color: var(--text-input);
+    background-color: var(--bg-input);
 }
 
-input:focus {
-    border-color: #5DBAA4;
+input::placeholder {
+    color: var(--text-input);
 }
+
+input:focus {}
 </style>
