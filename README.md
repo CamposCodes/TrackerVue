@@ -1,4 +1,7 @@
-# alura-tracker
+# Tracker Vue3
+
+## Tracker 
+Aplicação responsável por controlar o tempo gasto em cada tarefa (tracking) 
 
 ## Project setup
 ```
@@ -20,5 +23,5 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Deploy
+See <a>https://tracker-vue-nine.vercel.app/</a>
