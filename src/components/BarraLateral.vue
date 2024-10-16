@@ -59,8 +59,8 @@ export default defineComponent({
 
 <style scoped>
 img {
-    width: 35rem;
-    height: 12rem;
+    width: 17rem;
+    height: 10rem;
 }
 
 header {
