@@ -1,10 +1,20 @@
 <template>
     <Box class="formulario">
-        <div class="columns is-3">
-            <div class="column is-7" role="form" aria-label="Formulario para criação de uma nova tarefa">
+        <div class="columns">
+            <div class="column is-5" role="form" aria-label="Formulario para criação de uma nova tarefa">
                 <input type="text" class="input" placeholder="Qual tarefa deseja inicar?" v-model="descricao" />
             </div>
-            <div class="column">
+            <div class="column is-2.6">
+                <div class="select">
+                    <select v-model="idProjeto">
+                        <option value="">Selecione o projeto</option>
+                        <option :value="projeto.id" v-for="projeto in projetos" :key="projeto.id">
+                            {{ projeto.nome || 'Selecione uma opção' }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="column is-5">
                 <Temporizador @aoTemporizadorFinalizado="finalizarTarefa" />
             </div>
         </div>
@@ -12,16 +22,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import Temporizador from "./Temporizador.vue";
 import Box from "./Box.vue";
+import { useStore } from "vuex";
+import { key } from "@/store";
 
 export default defineComponent({
     name: "Formulario",
     emits: ['aoSalvarTarefa'],
     data() {
         return {
-            descricao: ''
+            descricao: '',
+            idProjeto: '',
         }
     },
     components: {
@@ -33,9 +46,16 @@ export default defineComponent({
             console.log('tempo: ', tempoDecorrido)
             this.$emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
-                descricao: this.descricao
+                descricao: this.descricao,
+                projeto: this.projetos.find(proj => proj.id == this.idProjeto)
             })
             this.descricao = '';
+        }
+    },
+    setup() {
+        const store = useStore(key)
+        return {
+            projetos: computed(() => store.state.projetos)
         }
     },
 });
@@ -47,14 +67,13 @@ export default defineComponent({
     background-color: var(--bg-primario);
 }
 
-
-
 section {
     padding-right: 1rem;
 }
 
-input {
-    height: 3rem;
+input,
+select {
+    height: 2.4rem;
     outline: none;
     border-color: #5DBAA4;
     color: var(--text-input);

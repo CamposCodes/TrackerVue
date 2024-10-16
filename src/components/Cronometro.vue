@@ -1,5 +1,6 @@
 <template>
     <section>
+        <i class="far fa-clock"></i>
         <strong class="display">
             {{ tempoDecorrido }}
         </strong>
@@ -28,5 +29,11 @@ export default defineComponent({
 <style scoped>
 .display {
     color: var(--texto-cronometro);
+
+}
+
+i {
+    color: var(--texto-cronometro);
+    margin: 0 .5rem;
 }
 </style>
