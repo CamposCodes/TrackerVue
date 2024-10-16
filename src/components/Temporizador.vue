@@ -58,5 +58,15 @@ export default defineComponent({
 div>button {
     background-color: var(--button);
     border: none;
+    transition: .2s;
+}
+
+div>button:hover {
+    background-color: var(--buttonH);
+}
+
+
+div>button:hover:disabled {
+    background-color: var(--buttonH);
 }
 </style>

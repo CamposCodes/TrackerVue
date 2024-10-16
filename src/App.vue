@@ -39,23 +39,25 @@ export default defineComponent({
 main {
     --bg-primario: #F7E7D5;
     --texto-primario: #fff;
-    --title-color: #080808;
     --texto-cronometro: #215c4c;
     --lateral: #24846A;
     --title-color: #24846A;
     --button: #2ea081;
+    --buttonH: #215c4c;
     --bg-input: #fff;
     --text-input: #000;
     --bg-tarefa: #2ea081;
 }
 
 main.modo-escuro {
+    --button: #2ea081;
+    --buttonH: #215c4c;
     --bg-tarefa: #2ea081;
     --bg-primario: #081015;
     --texto: #000;
     --texto-primario: #000;
     --texto-cronometro: #215c4c;
-    --title-color: #24846A;
+    --title-color: #fff;
     --lateral: #14161A;
     --bg-input: #14161A;
     --text-input: #fff;

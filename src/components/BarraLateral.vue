@@ -73,7 +73,15 @@ header {
 
 button {
     margin-top: 2rem;
+    background-color: var(--button);
+    border: none;
+    transition: .2s;
 }
+
+button:hover {
+    background-color: var(--buttonH);
+}
+
 
 nav {
     box-shadow: none;

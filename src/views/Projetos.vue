@@ -15,14 +15,14 @@
         <table class="table is-fullwidth">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
+                    <th class="text">ID</th>
+                    <th class="text">Nome</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="projeto in projetos" :key="projeto.id">
-                    <td>{{ projeto.id }}</td>
-                    <td>{{ projeto.nome }}</td>
+                    <td class="text">{{ projeto.id }}</td>
+                    <td class="text">{{ projeto.nome }}</td>
                 </tr>
             </tbody>
 
@@ -59,6 +59,35 @@ export default defineComponent({
 
 
 <style scoped>
+div>button {
+    background-color: var(--button);
+    border: none;
+    transition: .2s;
+}
+
+div>button:hover {
+    background-color: var(--buttonH);
+}
+
+input {
+    height: 2.4rem;
+    outline: none;
+    border-color: #5DBAA4;
+    color: var(--text-input);
+    background-color: var(--bg-input);
+}
+
+.text {
+    color: var(--title-color);
+}
+
+.table {
+    border-radius: .5rem;
+    background: var(--bg-primario);
+
+}
+
+
 .projetos {
     padding: 1rem;
 }
