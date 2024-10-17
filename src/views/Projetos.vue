@@ -1,28 +1,31 @@
 <template>
     <section class="projetos">
-        <h2 class="title">Projetos</h2>
-        <form @submit.prevent="salvar" class="mb-5">
-            <div class="field">
-                <label for="nomeDoProjeto" class="label">
-                    Nome do Projeto :
-                </label>
-                <input type="text" class="input" v-model="nomeDoProjeto" id="nomeDoProjeto">
-            </div>
-            <div class="field">
-                <button class="button" type="submit">Salvar</button>
-            </div>
-        </form>
+        <h2 class="is-size-1 has-text-centered mb-5">Projetos</h2>
+        <router-link to="/projetos/novo" class="button mb-5">
+            <span class="icon is-small">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span>Novo Projeto</span>
+        </router-link>
         <table class="table is-fullwidth">
             <thead>
                 <tr>
                     <th class="text">ID</th>
                     <th class="text">Nome</th>
+                    <th class="text">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="projeto in projetos" :key="projeto.id">
                     <td class="text">{{ projeto.id }}</td>
                     <td class="text">{{ projeto.nome }}</td>
+                    <td>
+                        <router-link :to="`/projetos/${projeto.id}`" class="button">
+                            <span class="icon is-small">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </router-link>
+                    </td>
                 </tr>
             </tbody>
 
@@ -36,22 +39,10 @@ import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
     name: 'Projetos',
-    data() {
-        return {
-            nomeDoProjeto: ''
-        };
-    },
-    methods: {
-        salvar() {
-            this.store.commit('ADICIONA_PROJETO', this.nomeDoProjeto)
-            this.nomeDoProjeto = '';
-        }
-    },
     setup() {
         const store = useStore();
         return {
-            store,
-            projetos: computed(() => store.state.projetos),
+            projetos: computed(() => store.state.projetos)
         }
     }
 })
@@ -59,22 +50,14 @@ export default defineComponent({
 
 
 <style scoped>
-div>button {
+.button {
     background-color: var(--button);
     border: none;
     transition: .2s;
 }
 
-div>button:hover {
+.button:hover {
     background-color: var(--buttonH);
-}
-
-input {
-    height: 2.4rem;
-    outline: none;
-    border-color: #5DBAA4;
-    color: var(--text-input);
-    background-color: var(--bg-input);
 }
 
 .text {
@@ -87,13 +70,11 @@ input {
 
 }
 
-
 .projetos {
     padding: 1rem;
 }
 
-h2,
-label {
+h2 {
     color: var(--title-color);
 }
 </style>
