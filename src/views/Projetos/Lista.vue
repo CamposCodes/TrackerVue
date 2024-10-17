@@ -18,13 +18,13 @@
                 <tr v-for="projeto in projetos" :key="projeto.id">
                     <td class="text">{{ projeto.id }}</td>
                     <td class="text">{{ projeto.nome }}</td>
-                    <td>
+                    <td class="line is-flex">
                         <router-link :to="`/projetos/${projeto.id}`" class="button">
                             <span class="icon is-small">
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
                         </router-link>
-                        <button class="button ml-2" @click="excluir(projeto.id)">
+                        <button class="button ml-1" @click="excluir(projeto.id)">
                             <span class="icon is-small">
                                 <i class="fas fa-trash"></i>
                             </span>
@@ -77,6 +77,5 @@ export default defineComponent({
 .table {
     border-radius: .5rem;
     background: var(--bg-primario);
-
 }
 </style>
