@@ -1,6 +1,5 @@
 <template>
     <section class="projetos">
-        <h2 class="is-size-1 has-text-centered mb-5">Novo projeto</h2>
         <form @submit.prevent="salvar" class="mb-5">
             <div class="field">
                 <label for="nomeDoProjeto" class="label">
@@ -87,11 +86,6 @@ input {
     border-radius: .5rem;
     background: var(--bg-primario);
 
-}
-
-
-.projetos {
-    padding: 1rem;
 }
 
 h2,

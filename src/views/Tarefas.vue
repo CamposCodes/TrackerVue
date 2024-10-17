@@ -1,7 +1,7 @@
 <template>
+    <h2 class="is-size-1 has-text-centered mb-5">Tarefas</h2>
     <Formulario @aoSalvarTarefa="salvarTarefa" />
     <div class="lista">
-        <h2 class="is-size-1 has-text-centered mb-5">Tarefas</h2>
         <Tarefa v-for="(tarefa, index) in tarefas" :key="index" :tarefa="tarefa" />
         <Box class="tarefa" v-if="listaEstaVazia">Você não está muito produtivo hoje :( </Box>
     </div>

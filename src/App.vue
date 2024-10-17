@@ -72,4 +72,8 @@ main.modo-escuro {
 h2 {
     color: var(--title-color);
 }
+
+.projetos {
+    padding: 1rem;
+}
 </style>
