@@ -27,6 +27,9 @@ import Temporizador from "./Temporizador.vue";
 import Box from "./Box.vue";
 import { useStore } from "vuex";
 import { key } from "@/store";
+import { TipoNotificacao } from "@/interfaces/INotificacao";
+import { NOTIFICAR } from "@/store/tipo-mutações";
+import { notificacaoMixin } from "@/mixins/notificar";
 
 export default defineComponent({
     name: "Formulario",
@@ -41,21 +44,27 @@ export default defineComponent({
         Temporizador,
         Box
     },
+    mixins: [notificacaoMixin],
     methods: {
         finalizarTarefa(tempoDecorrido: number): void {
-            console.log('tempo: ', tempoDecorrido)
+            const projeto = this.projetos.find((p) => p.id == this.idProjeto);
+            if (!projeto) {
+                this.notificar(TipoNotificacao.FALHA, 'Ops !', 'Selecione um projeto para concluir a tarefa')
+                return;
+            }
             this.$emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
                 descricao: this.descricao,
                 projeto: this.projetos.find(proj => proj.id == this.idProjeto)
             })
             this.descricao = '';
-        }
+        },
     },
     setup() {
         const store = useStore(key)
         return {
-            projetos: computed(() => store.state.projetos)
+            projetos: computed(() => store.state.projetos),
+            store
         }
     },
 });

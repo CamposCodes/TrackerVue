@@ -16,7 +16,7 @@ import Box from "../components/Box.vue";
 import "../assets/global.css";
 
 export default defineComponent({
-    name: "App",
+    name: "Tarefas",
     components: {
         Formulario,
         Tarefa,
