@@ -61,7 +61,7 @@ main.modo-escuro {
     --bg-primario: #081015;
     --texto: #000;
     --texto-primario: #000;
-    --texto-cronometro: #4ae4bb;
+    --texto-cronometro: #37ffca;
     --title-color: #fff;
     --bg-pop: #000;
     --lateral: #14161A;

@@ -2,31 +2,31 @@
   "projetos": [
     {
       "id": "1",
-      "nome": "Tracker"
+      "nome": "Tracker Campos Net"
     }
   ],
   "tarefas": [
     {
-      "id": "beba",
-      "duracaoEmSegundos": 14,
-      "descricao": "Salvare",
-      "projeto": {
-        "id": 1,
-        "nome": "Tracker"
-      }
-    },
-    {
-      "id": "7df3",
+      "id": "5566",
       "duracaoEmSegundos": 4,
-      "descricao": "Dead",
+      "descricao": "Vuex e Composition API",
       "projeto": {
-        "id": "8031",
-        "nome": "Estudos"
+        "id": "1",
+        "nome": "Tracker Campos Net"
       }
     },
     {
-      "id": "f4e9",
-      "duracaoEmSegundos": 0,
+      "id": "8bdd",
+      "duracaoEmSegundos": 2,
+      "descricao": "",
+      "projeto": {
+        "id": "1",
+        "nome": "Tracker Campos Net"
+      }
+    },
+    {
+      "id": "8d5d",
+      "duracaoEmSegundos": 1,
       "descricao": ""
     }
   ]
