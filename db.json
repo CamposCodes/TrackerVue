@@ -3,6 +3,39 @@
     {
       "id": "1",
       "nome": "Tracker"
+    },
+    {
+      "id": "8031",
+      "nome": "Estudos"
+    }
+  ],
+  "tarefas": [
+    {
+      "id": "1",
+      "duracaoEmSegundos": 120,
+      "descricao": "Configuração de Ambiente",
+      "projeto": {
+        "id": 1,
+        "nome": "Tracker"
+      }
+    },
+    {
+      "id": "9cd3",
+      "duracaoEmSegundos": 1,
+      "descricao": "Estudar Mais",
+      "projeto": {
+        "id": 1,
+        "nome": "Tracker"
+      }
+    },
+    {
+      "id": "beba",
+      "duracaoEmSegundos": 14,
+      "descricao": "Salvar",
+      "projeto": {
+        "id": 1,
+        "nome": "Tracker"
+      }
     }
   ]
 }

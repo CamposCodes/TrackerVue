@@ -41,6 +41,7 @@ export default defineComponent({
 
 main {
     --bg-primario: #F7E7D5;
+    --bg-pop: #dfcdb8;
     --texto-primario: #fff;
     --texto-cronometro: #215c4c;
     --lateral: #24846A;
@@ -50,6 +51,7 @@ main {
     --bg-input: #fff;
     --text-input: #000;
     --bg-tarefa: #2ea081;
+    --modal: #fff;
 }
 
 main.modo-escuro {
@@ -59,11 +61,13 @@ main.modo-escuro {
     --bg-primario: #081015;
     --texto: #000;
     --texto-primario: #000;
-    --texto-cronometro: #215c4c;
+    --texto-cronometro: #4ae4bb;
     --title-color: #fff;
+    --bg-pop: #000;
     --lateral: #14161A;
     --bg-input: #14161A;
     --text-input: #fff;
+    --modal: #2ea081;
 }
 
 .conteudo {

@@ -1,6 +1,6 @@
 <template>
     <Box>
-        <div class="columns">
+        <div class="columns tarefa" @click="tarefaClicada">
             <div class="column is-4">{{ tarefa.descricao || 'Tarefa sem descrição' }}</div>
             <div class="column is-3 projeto">{{ tarefa.projeto?.nome || 'N/D' }}</div>
             <div class="column">
@@ -19,6 +19,7 @@ import Box from "./Box.vue";
 
 export default defineComponent({
     name: "Tarefa",
+    emits: ['aoTarefaClicada'],
     components: {
         Cronometro,
         Box,
@@ -28,11 +29,20 @@ export default defineComponent({
             type: Object as PropType<ITarefa>,
             required: true
         }
+    },
+    methods: {
+        tarefaClicada(): void {
+            this.$emit('aoTarefaClicada', this.tarefa);
+        }
     }
 });
 </script>
 
 <style scoped>
+.tarefa:hover {
+    cursor: pointer;
+}
+
 div {
     background: var(--bg-tarefa);
     color: var(--texto-primario);
