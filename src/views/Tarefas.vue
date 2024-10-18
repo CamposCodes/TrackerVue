@@ -24,6 +24,7 @@
             <footer class="modal-card-foot">
                 <div class="buttons">
                     <button @click="alterarTarefa" class="button is-success">Salvar Alterações</button>
+                    <button @click="deletarTarefa(tarefaSelecionada.id)" class="button del">Excluir Tarefa</button>
                     <button @click="fecharModal" class="button">Cancelar</button>
                 </div>
             </footer>
@@ -38,7 +39,7 @@ import Tarefa from "../components/Tarefa.vue";
 
 import Box from "../components/Box.vue";
 import "../assets/global.css";
-import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS } from "@/store/tipo-acoes";
+import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_TAREFA } from "@/store/tipo-acoes";
 import { useStore } from "@/store";
 import ITarefa from "@/interfaces/ITarefa";
 
@@ -57,6 +58,11 @@ export default defineComponent({
     methods: {
         salvarTarefa(tarefa: ITarefa) {
             this.store.dispatch(CADASTRAR_TAREFA, tarefa);
+        },
+        deletarTarefa(id: string) {
+            this.store.dispatch(REMOVER_TAREFA, id)
+                .then(() => this.fecharModal());
+
         },
         selecionarTarefa(tarefa: ITarefa): void {
             this.tarefaSelecionada = tarefa;
@@ -80,7 +86,7 @@ export default defineComponent({
         store.dispatch(OBTER_TAREFAS);
         store.dispatch(OBTER_PROJETOS);
         return {
-            tarefas: computed(() => store.state.tarefas),
+            tarefas: computed(() => store.state.tarefa.tarefas),
             store
         }
     }
@@ -102,7 +108,11 @@ export default defineComponent({
 
 .t {
     color: var(--title-color);
+}
 
+
+.del {
+    background: rgba(163, 8, 8, 0.71);
 }
 
 h2 {
