@@ -82,7 +82,6 @@ export default defineComponent({
 }
 
 .table {
-    border-radius: .5rem;
     background: var(--bg-primario);
 }
 </style>
