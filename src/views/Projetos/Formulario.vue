@@ -44,14 +44,14 @@ export default defineComponent({
         salvar() {
             if (this.id) {
                 this.store.commit(ALTERA_PROJETO, { id: this.id, nome: this.nomeDoProjeto });
-                this.notificar(TipoNotificacao.SUCESSO, 'Projeto Alterado', 'Seu Projeto alterado já está disponível');
+                this.notificar(TipoNotificacao.ATENCAO, 'Projeto Alterado', 'Seu Projeto alterado já está disponível');
             }
             else {
-                this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto)
+                this.store.commit(ADICIONA_PROJETO, this.nomeDoProjeto);
+                this.notificar(TipoNotificacao.SUCESSO, 'Excelente !', 'Projeto cadastrado com sucesso');
             }
             this.nomeDoProjeto = '';
             this.$router.push('/projetos')
-            this.notificar(TipoNotificacao.SUCESSO, 'Excelente !', 'Projeto cadastrado com sucesso');
         },
 
     },
