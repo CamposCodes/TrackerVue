@@ -1,5 +1,5 @@
 <template>
-    <main class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuroAtivo }">
+    <main id="all" class="columns is-gapless is-multiline" :class="{ 'modo-escuro': modoEscuroAtivo }">
         <div class="column is-one-fifth">
             <BarraLateral @aoTemaAlterado="trocarTema" />
         </div>
@@ -93,6 +93,8 @@ main.modo-escuro {
     background-color: var(--bg-primario);
     color: var(--texto-primario);
     padding: .5rem;
+    width: 100%;
+    min-height: 100vh;
 }
 
 h2 {
