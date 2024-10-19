@@ -35,6 +35,25 @@ export default defineComponent({
 </script>
 
 <style>
+/* Estiliza a barra de rolagem */
+::-webkit-scrollbar {
+    width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #0000002d
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2ea081;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #279472;
+}
+
+
 .lista {
     padding: 1.25rem;
 }
@@ -62,7 +81,7 @@ main.modo-escuro {
     --texto: #000;
     --texto-primario: #000;
     --texto-cronometro: #37ffca;
-    --title-color: #fff;
+    --title-color: #37ffca;
     --bg-pop: #000;
     --lateral: #14161A;
     --bg-input: #14161A;

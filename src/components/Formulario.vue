@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import Temporizador from "./Temporizador.vue";
 import Box from "./Box.vue";
 import { useStore } from "vuex";
@@ -34,43 +34,50 @@ import useNotificador from '@/hooks/notificador';
 export default defineComponent({
     name: "Formulario",
     emits: ['aoSalvarTarefa'],
-    data() {
-        return {
-            descricao: '',
-            idProjeto: '',
-        }
-    },
     components: {
         Temporizador,
         Box
     },
     methods: {
-        finalizarTarefa(tempoDecorrido: number): void {
-            const projeto = this.projetos.find((p) => p.id == this.idProjeto);
+
+    },
+    setup(props, { emit }) {
+        const store = useStore(key);
+
+        const descricao = ref("");
+        const idProjeto = ref("");
+        const projetos = computed(() => store.state.projeto.projetos);
+
+
+        const { notificar } = useNotificador();
+
+
+        const finalizarTarefa = (tempoDecorrido: number): void => {
+            const projeto = projetos.value.find((p) => p.id == idProjeto.value);
             if (!projeto) {
-                this.notificar(TipoNotificacao.ATENCAO, 'Tarefa sem Projeto Vinculado', 'Selecione um projeto para descrever melhor a tarefa')
-                this.$emit('aoSalvarTarefa', {
+                notificar(TipoNotificacao.ATENCAO, 'Tarefa sem Projeto Vinculado', 'Selecione um projeto para descrever melhor a tarefa')
+                emit('aoSalvarTarefa', {
                     duracaoEmSegundos: tempoDecorrido,
-                    descricao: this.descricao,
-                    projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+                    descricao: descricao.value,
+                    projeto: projetos.value.find(proj => proj.id == idProjeto.value)
                 })
                 return;
             }
-            this.$emit('aoSalvarTarefa', {
+            emit('aoSalvarTarefa', {
                 duracaoEmSegundos: tempoDecorrido,
-                descricao: this.descricao,
-                projeto: this.projetos.find(proj => proj.id == this.idProjeto)
+                descricao: descricao.value,
+                projeto: projetos.value.find(proj => proj.id == idProjeto.value)
             })
-            this.descricao = '';
-        },
-    },
-    setup() {
-        const store = useStore(key);
-        const { notificar } = useNotificador();
+            descricao.value = '';
+        };
+
         return {
-            projetos: computed(() => store.state.projeto.projetos),
+            descricao,
+            idProjeto,
+            projetos,
             store,
             notificar,
+            finalizarTarefa
         }
     },
 });

@@ -1,11 +1,22 @@
 <template>
     <h2 class="t is-size-1 has-text-centered mb-5">Tarefas</h2>
     <Formulario @aoSalvarTarefa="salvarTarefa" />
+    <div class="field">
+        <label for="filtro" class="label">Filtrar :</label>
+        <p class="control has-icons-left has-icons-right">
+            <input class="input" type="texto" placeholder="Digite para filtrar" v-model="filtro" />
+            <span class="icon is-small is-left">
+                <i class="fas fa-search"></i>
+            </span>
+        </p>
+    </div>
     <div class="lista">
+        <Box class="tarefa" v-if="listaEstaVazia && !filtro">Você não está muito produtivo hoje :( </Box>
+        <Box class="tarefa" v-else-if="listaEstaVazia">Nenhuma tarefa corresponde ao filtro digitado :(</Box>
         <Tarefa class="tarefa" @aoTarefaClicada="selecionarTarefa" v-for="(tarefa, index) in tarefas" :key="index"
             :tarefa="tarefa" />
-        <Box class="tarefa" v-if="listaEstaVazia">Você não está muito produtivo hoje :( </Box>
     </div>
+
     <div class="modal pop" :class="{ 'is-active': tarefaSelecionada }" v-if="tarefaSelecionada">
         <div class="modal-background"></div>
         <div class="modal-card">
@@ -33,10 +44,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref, watchEffect } from "vue";
 import Formulario from "../components/Formulario.vue";
 import Tarefa from "../components/Tarefa.vue";
-
 import Box from "../components/Box.vue";
 import "../assets/global.css";
 import { ALTERAR_TAREFA, CADASTRAR_TAREFA, OBTER_PROJETOS, OBTER_TAREFAS, REMOVER_TAREFA } from "@/store/tipo-acoes";
@@ -53,7 +63,7 @@ export default defineComponent({
     data() {
         return {
             tarefaSelecionada: null as ITarefa | null
-        }
+        };
     },
     methods: {
         salvarTarefa(tarefa: ITarefa) {
@@ -62,14 +72,12 @@ export default defineComponent({
         deletarTarefa(id: string) {
             this.store.dispatch(REMOVER_TAREFA, id)
                 .then(() => this.fecharModal());
-
         },
         selecionarTarefa(tarefa: ITarefa): void {
             this.tarefaSelecionada = tarefa;
         },
         fecharModal() {
             this.tarefaSelecionada = null;
-
         },
         alterarTarefa() {
             this.store.dispatch(ALTERAR_TAREFA, this.tarefaSelecionada)
@@ -85,20 +93,34 @@ export default defineComponent({
         const store = useStore();
         store.dispatch(OBTER_TAREFAS);
         store.dispatch(OBTER_PROJETOS);
+
+        const filtro = ref("");
+
+        watchEffect(() => {
+            store.dispatch(OBTER_TAREFAS, filtro.value);
+        });
+
         return {
             tarefas: computed(() => store.state.tarefa.tarefas),
-            store
-        }
+            store,
+            filtro
+        };
     }
 });
 </script>
 
-
 <style scoped>
+.field {
+    margin: .5rem 1.5rem;
+}
+
+.field input::placeholder {
+    color: var(--text-input);
+}
+
 .modal-card-head {
     background: var(--lateral);
     box-shadow: none;
-
 }
 
 .modal-card-body,
@@ -110,13 +132,12 @@ export default defineComponent({
     color: var(--title-color);
 }
 
-
 .del {
     background: rgba(163, 8, 8, 0.71);
 }
 
 h2 {
-    color: var(--modal);
+    color: var(--title-color);
 }
 
 button {
@@ -129,7 +150,6 @@ button {
 button:hover {
     background-color: var(--buttonH);
 }
-
 
 input {
     height: 2.4rem;
@@ -146,7 +166,6 @@ input {
 .table {
     border-radius: .5rem;
     background: var(--bg-primario);
-
 }
 
 label {

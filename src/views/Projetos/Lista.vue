@@ -46,21 +46,25 @@ import { OBTER_PROJETOS, REMOVER_PROJETO } from '@/store/tipo-acoes';
 export default defineComponent({
     name: 'Lista',
     methods: {
-        excluir(id: string) {
-            this.store.dispatch(REMOVER_PROJETO, id)
-            this.store.commit(NOTIFICAR, {
+    },
+    setup() {
+        const store = useStore();
+        const projetos = computed(() => store.state.projeto.projetos);
+
+        store.dispatch(OBTER_PROJETOS);
+
+        const excluir = (id: string) => {
+            store.dispatch(REMOVER_PROJETO, id)
+            store.commit(NOTIFICAR, {
                 titulo: 'Projeto Excluído',
                 texto: 'Seu projeto foi excluído!',
                 tipo: TipoNotificacao.FALHA
             })
         }
-    },
-    setup() {
-        const store = useStore();
-        store.dispatch(OBTER_PROJETOS);
         return {
-            projetos: computed(() => store.state.projeto.projetos),
-            store
+            store,
+            excluir,
+            projetos,
         }
     }
 })

@@ -67,7 +67,7 @@ header {
     padding: 1rem;
     background: var(--lateral);
     width: 100%;
-    height: 100vh;
+    height: 100%;
     text-align: center;
 }
 

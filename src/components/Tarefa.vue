@@ -34,7 +34,7 @@ export default defineComponent({
         tarefaClicada(): void {
             this.$emit('aoTarefaClicada', this.tarefa);
         }
-    }
+    },
 });
 </script>
 

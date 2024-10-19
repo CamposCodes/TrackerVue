@@ -1,32 +1,63 @@
 {
   "projetos": [
     {
-      "id": "1",
-      "nome": "Tracker Campos Net"
+      "id": "965c",
+      "nome": "Estudos"
+    },
+    {
+      "id": "b5ce",
+      "nome": "Vuex"
+    },
+    {
+      "id": "cdd6",
+      "nome": "TypeScript"
     }
   ],
   "tarefas": [
     {
-      "id": "5566",
-      "duracaoEmSegundos": 4,
-      "descricao": "Vuex e Composition API",
+      "id": "d519",
+      "duracaoEmSegundos": 3,
+      "descricao": "curso alura",
       "projeto": {
-        "id": "1",
-        "nome": "Tracker Campos Net"
+        "id": "b5ce",
+        "nome": "Vuex"
       }
     },
     {
-      "id": "8bdd",
+      "id": "1862",
       "duracaoEmSegundos": 2,
-      "descricao": "",
+      "descricao": "Diretivas",
       "projeto": {
-        "id": "1",
-        "nome": "Tracker Campos Net"
+        "id": "965c",
+        "nome": "Estudos"
       }
     },
     {
-      "id": "8d5d",
+      "id": "be9f",
+      "duracaoEmSegundos": 0,
+      "descricao": "DCC070",
+      "projeto": {
+        "id": "965c",
+        "nome": "Estudos"
+      }
+    },
+    {
+      "id": "c928",
       "duracaoEmSegundos": 1,
+      "descricao": "Reatividade",
+      "projeto": {
+        "id": "cdd6",
+        "nome": "TypeScript"
+      }
+    },
+    {
+      "id": "3ed2",
+      "duracaoEmSegundos": 2,
+      "descricao": ""
+    },
+    {
+      "id": "0650",
+      "duracaoEmSegundos": 0,
       "descricao": ""
     }
   ]
